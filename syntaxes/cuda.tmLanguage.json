@@ -1,9 +1,21 @@
 {
 	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"firstLineMatch": "(?i)-\\*-[^*]*(Mode:\\s*)?C\\+\\+(\\s*;.*?)?\\s*-\\*-",
-	"name": "CUDA C++",
+    "name": "CUDA C++",
 	"scopeName": "source.cuda-cpp",
-	"patterns": [ 
+	"patterns": [
+        {
+            "begin": "(<<<)",
+            "end": "(>>>)",
+            "name": "keyword.operator.cuda-cpp",
+            "patterns": [
+                {
+                    "include": "$base"
+                }
+            ]
+        },
+        {
+			"include": "source.cpp"
+        },
         {
             "match": "\\b__(global|device|host|noinline|forceinline)__\\b",
             "name": "keyword.function.qualifier.cuda-cpp"
@@ -73,16 +85,6 @@
             "name": "support.function.cuda-cpp"
         },
         {
-            "begin": "(<<<)",
-            "end": "(>>>)",
-            "name": "keyword.operator.cuda-cpp",
-            "patterns": [
-                {
-                    "include": "$base"
-                }
-            ]
-        },
-        {
             "match": "\\b__launch_bounds__\\b",
             "name": "support.function.qualifier.cuda-cpp"
         },
@@ -97,62 +99,9 @@
         {
             "match": "\\b__(dsqrt|dadd|dsub|dmul|ddiv|drcp|fma)_(rn|rz|ru|rd)\\b",
             "name": "support.function.cuda-cpp"
-		},
-		{
-			"include": "source.cpp"
-		}
+        }
 	],
 	"repository": {
-		"angle_brackets": {
-			"begin": "<",
-			"end": ">",
-			"name": "meta.angle-brackets.cpp",
-			"patterns": [
-				{
-					"include": "source.cpp"
-				}
-			]
-		},
-		"block": {
-			"begin": "\\{",
-			"beginCaptures": {
-				"0": {
-					"name": "punctuation.section.block.begin.bracket.curly.c"
-				}
-			},
-			"end": "\\}",
-			"endCaptures": {
-				"0": {
-					"name": "punctuation.section.block.end.bracket.curly.c"
-				}
-			},
-			"name": "meta.block.cpp",
-			"patterns": [
-				{
-					"include": "source.cpp"
-				}
-			]
-		},
-		"constructor": {
-			"patterns": [
-				{
-					"include": "source.cpp"
-				}
-			]
-		},
-		"special_block": {
-			"patterns": [
-				{
-					"include": "source.cpp"
-				}
-			]
-		},
-		"strings": {
-			"patterns": [
-				{
-					"include": "source.cpp"
-				}
-			]
-		}
+		
 	}
 }
