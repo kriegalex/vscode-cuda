@@ -7,13 +7,14 @@
     },
     "icon": "images/cudaIcon.png",
     "description": "CUDA C++ language support for Visual Studio Code",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "publisher": "kriegalex",
     "engines": {
-        "vscode": "^1.18.0"
+        "vscode": "^1.18.*"
     },
     "categories": [
-        "Languages"
+        "Languages",
+        "Snippets"
     ],
     "repository": {
         "type": "git",
