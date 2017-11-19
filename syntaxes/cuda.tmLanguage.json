@@ -1,0 +1,158 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"firstLineMatch": "(?i)-\\*-[^*]*(Mode:\\s*)?C\\+\\+(\\s*;.*?)?\\s*-\\*-",
+	"name": "CUDA C++",
+	"scopeName": "source.cuda-cpp",
+	"patterns": [ 
+        {
+            "match": "\\b__(global|device|host|noinline|forceinline)__\\b",
+            "name": "keyword.function.qualifier.cuda-cpp"
+        },
+        {
+            "match": "\\b__(device|constant|managed|shared|restrict)__\\b",
+            "name": "storage.modifier.cuda-cpp"
+        },
+        {
+            "match": "\\b(dim3|char[1-4]|uchar[1-4]|short[1-4]|ushort[1-4]|int[1-4]|uint[1-4]|long[1-4]|ulong[1-4]|longlong[1-4]|ulonglong[1-4]|float[1-4]|double[1-4])\\b",
+            "name": "support.type.cuda-cpp"
+        },
+        {
+            "match": "\\b(gridDim|blockIdx|blockDim|threadIdx|warpSize)\\b",
+            "name": "variable.language.cuda-cpp"
+        },
+        {
+            "match": "\\b__(threadfence_system|threadfence_block|threadfence)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b__(syncthreads_count|syncthreads_and|syncthreads_or|syncthreads)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b(texCubemapLayered|tex1Dlayered|tex2Dlayered|tex2Dgather|tex1Dfetch|texCubemap|tex1D|tex2D|tex3D)\\b",
+            "name": "support.function.cuda-cpp"
+        },        
+        {
+            "match": "\\b(surfCubemapLayeredwrite|surfCubemapLayeredread|surf1DLayeredwrite|surf2DLayeredwrite|surf1DLayeredread|surf2DLayeredread|surfCubemapwrite|surfCubemapread|surf1Dwrite|surf2Dwrite|surf3Dwrite|surf1Dread|surf2Dread|surf3Dread)\\b",
+            "name": "support.function.cuda-cpp"
+        },        
+        {
+            "match": "\\b__ldg\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b(clock|clock64)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b(atomicExch|atomicAdd|atomicSub|atomicMin|atomicMax|atomicInc|atomicDec|atomicCAS|atomicAnd|atomicXor|atomicOr)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b__(ballot|all|any)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b__(shfl_down|shfl_xor|shfl_up|shfl)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b__(prof_trigger)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\bassert\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\printf\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b(malloc|free|memcpy|memset)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "begin": "(<<<)",
+            "end": "(>>>)",
+            "name": "keyword.operator.cuda-cpp",
+            "patterns": [
+                {
+                    "include": "$base"
+                }
+            ]
+        },
+        {
+            "match": "\\b__launch_bounds__\\b",
+            "name": "support.function.qualifier.cuda-cpp"
+        },
+        {
+            "match": "\\b__(fdividef|sincosf|log10f|exp10f|log2f|logf|expf|powf|sinf|cosf|tanf)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b__((fsqrt|frcp|fadd|fsub|fmul|fmaf|fdiv)_(rn|rz|ru|rd)|frsqrt_rn)\\b",
+            "name": "support.function.cuda-cpp"
+        },
+        {
+            "match": "\\b__(dsqrt|dadd|dsub|dmul|ddiv|drcp|fma)_(rn|rz|ru|rd)\\b",
+            "name": "support.function.cuda-cpp"
+		},
+		{
+			"include": "source.cpp"
+		}
+	],
+	"repository": {
+		"angle_brackets": {
+			"begin": "<",
+			"end": ">",
+			"name": "meta.angle-brackets.cpp",
+			"patterns": [
+				{
+					"include": "source.cpp"
+				}
+			]
+		},
+		"block": {
+			"begin": "\\{",
+			"beginCaptures": {
+				"0": {
+					"name": "punctuation.section.block.begin.bracket.curly.c"
+				}
+			},
+			"end": "\\}",
+			"endCaptures": {
+				"0": {
+					"name": "punctuation.section.block.end.bracket.curly.c"
+				}
+			},
+			"name": "meta.block.cpp",
+			"patterns": [
+				{
+					"include": "source.cpp"
+				}
+			]
+		},
+		"constructor": {
+			"patterns": [
+				{
+					"include": "source.cpp"
+				}
+			]
+		},
+		"special_block": {
+			"patterns": [
+				{
+					"include": "source.cpp"
+				}
+			]
+		},
+		"strings": {
+			"patterns": [
+				{
+					"include": "source.cpp"
+				}
+			]
+		}
+	}
+}
