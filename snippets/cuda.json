@@ -1,11 +1,11 @@
 {
-  "__s": {
+  	"__s": {
 		"prefix": "__s",
 		"body": "\n__syncthreads();\n",
 		"description": "",
 		"scope": "source.cuda-c++"
-  },
-  "cmal": {
+ 	 },
+  	"cmal": {
 		"prefix": "cmal",
 		"body": "\ncudaMalloc((void**)&${1:variable}, ${2:bytes});\n",
 		"description": "",
@@ -16,26 +16,26 @@
 		"body": "\ncudaMallocManaged((void**)&${1:variable}, ${2:bytes});\n",
 		"description": "",
 		"scope": "source.cuda-c++"
-	},
+	},	
 	"cmem": {
 		"prefix": "cmem",
 		"body": "\ncudaMemcpy(${1:dest}, ${2:src}, ${3:bytes}, cudaMemcpy${4:Host}To${5:Device});\n",
 		"description": "",
 		"scope": "source.cuda-c++"
-  },
-  "kernel": {
+	},
+	"kernel": {
 		"prefix": "kernel",
 		"body": "\n__global__ void ${1:kernel}(${2})\n",
 		"description": "",
 		"scope": "source.cuda-c++"
-  },
-  "thrusthv": {
+	},
+	"thrusthv": {
 		"prefix": "thursthv",
 		"body": "thrust::host_vector<${1:char}> v$0;",
 		"description": "thrust::host_vector",
 		"scope": "source.cpp, source.cuda-cpp"
-  },
-  "thrustdv": {
+	},
+	"thrustdv": {
 		"prefix": "thrustdv",
 		"body": "thrust::device_vector<${1:char}> v$0;",
 		"description": "thrust::device_vector",

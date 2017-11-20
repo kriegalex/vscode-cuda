@@ -4,17 +4,17 @@
 	"scopeName": "source.cuda-cpp",
 	"patterns": [
         {
-            "begin": "(<<<)",
+			"include": "source.cpp"
+        },
+        {
+            "begin": "([a-zA-Z_][a-zA-Z0-9_]*+\\s*)(<<<)",
             "end": "(>>>)",
-            "name": "keyword.operator.cuda-cpp",
+            "name": "support.function.cuda-cpp",
             "patterns": [
                 {
                     "include": "$base"
                 }
             ]
-        },
-        {
-			"include": "source.cpp"
         },
         {
             "match": "\\b__(global|device|host|noinline|forceinline)__\\b",
@@ -102,6 +102,5 @@
         }
 	],
 	"repository": {
-		
-	}
+    }
 }
