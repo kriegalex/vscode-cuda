@@ -13,7 +13,7 @@ This extension supports most of the basic CUDA keywords and functions, such as b
 - atomicAdd, atomicSub, surfCubemapLayeredread, ...
 - \_\_shfl_down, \_\_syncthreads, ...
 
-\!\[code coloring\]\(images/code-coloring.gif\)
+![code-coloring](images/code-coloring.gif)
 
 ### CUDA snippets
 
