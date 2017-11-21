@@ -1,20 +1,37 @@
-# vscode-cuda README
+# CUDA for VSCode
 
-This is the README for your extension "vscode-cuda". After writing up a brief description, we recommend including the following sections.
+This extension aims at providing support for CUDA (C++) in VS Code.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+### Code coloring
 
-For example if there is an image subfolder under your extension project workspace:
+This extension supports most of the basic CUDA keywords and functions, such as but not limited to :
 
-\!\[feature X\]\(images/feature-x.png\)
+- cudaMalloc, cudaFree, ...
+- \_\_global\_\_, \_\_device\_\_, \_\_host\_\_, ...
+- atomicAdd, atomicSub, surfCubemapLayeredread, ...
+- \_\_shfl_down, \_\_syncthreads, ...
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+\!\[code coloring\]\(images/code-coloring.gif\)
+
+### CUDA snippets
+
+The following snippets are available :
+
+- **\_\_s** : __syncthreads();
+- **cmal** : cudaMalloc((void**)&${1:variable}, ${2:bytes});
+- **cmalmng** : cudaMallocManaged((void**)&${1:variable}, ${2:bytes});	
+- **cmem** : cudaMemcpy(${1:dest}, ${2:src}, ${3:bytes}, cudaMemcpy${4:Host}To${5:Device});
+- **cfree** : cudaFree(${1:variable});
+- **kernel** : \_\_global\_\_ void ${1:kernel}(${2})
+- **thrusthv** : thrust::host_vector<${1:char}> v$0;
+- **thrustdv** : thrust::device_vector<${1:char}> v$0;
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- VSCode 1.18+. Slightly older versions should work, very old versions are not guaranteed to work.
+- This extension has been tested with the default VSCode skin (dark+) and the popular One Dark Pro theme. 
 
 ## Extension Settings
 
@@ -29,23 +46,24 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- No support for Intellisense navigation through code (right click->Go to definition,...). For now, you must change the file type to C++ to have it. This will be improved in next release, needs research.
+
+## Planned features
+
+Below are listed the features that ideally should be available in this extension. There is no guarantees this features will be implemented, so feel free to fork this project and propose pull requests.
+
+- Intellisense basic support: go to functions definition and declaration
+- CMake integration: make this extension work together with existing CMake Tools, as CMake (3.8)3.9 added official support for CUDA language
+- Basic debugging: upgrade this extension to not only color code but allow for basic debugging features like breakpoints
+- Full debugging support: basically allows you to uninstall nsight and develop everything CUDA inside VSCode
+
+## Feature requests
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.1.0
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+Initial release of vs-cuda extension
 
 -----------------------------------------------------------------------------------------------------------
 
