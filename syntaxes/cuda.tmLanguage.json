@@ -4,12 +4,6 @@
 	"scopeName": "source.cuda-cpp",
 	"patterns": [
         {
-            "include": "source.cpp"
-        },
-        {
-            "include": "#kernel_function_call"
-        },
-        {
             "match": "\\b__(global|device|host|noinline|forceinline)__\\b",
             "name": "keyword.function.qualifier.cuda-cpp"
         },
@@ -26,72 +20,14 @@
             "name": "variable.language.cuda-cpp"
         },
         {
-            "match": "\\b__(threadfence_system|threadfence_block|threadfence)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b__(syncthreads_count|syncthreads_and|syncthreads_or|syncthreads)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b(texCubemapLayered|tex1Dlayered|tex2Dlayered|tex2Dgather|tex1Dfetch|texCubemap|tex1D|tex2D|tex3D)\\b",
-            "name": "support.function.cuda-cpp"
-        },        
-        {
-            "match": "\\b(surfCubemapLayeredwrite|surfCubemapLayeredread|surf1DLayeredwrite|surf2DLayeredwrite|surf1DLayeredread|surf2DLayeredread|surfCubemapwrite|surfCubemapread|surf1Dwrite|surf2Dwrite|surf3Dwrite|surf1Dread|surf2Dread|surf3Dread)\\b",
-            "name": "support.function.cuda-cpp"
-        },        
-        {
-            "match": "\\b__ldg\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b(clock|clock64)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b(atomicExch|atomicAdd|atomicSub|atomicMin|atomicMax|atomicInc|atomicDec|atomicCAS|atomicAnd|atomicXor|atomicOr)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b__(ballot|all|any)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b__(shfl_down|shfl_xor|shfl_up|shfl)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b__(prof_trigger)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\bassert\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\printf\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b(malloc|free|memcpy|memset)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
             "match": "\\b__launch_bounds__\\b",
             "name": "support.function.qualifier.cuda-cpp"
         },
         {
-            "match": "\\b__(fdividef|sincosf|log10f|exp10f|log2f|logf|expf|powf|sinf|cosf|tanf)\\b",
-            "name": "support.function.cuda-cpp"
+            "include": "#block"
         },
         {
-            "match": "\\b__((fsqrt|frcp|fadd|fsub|fmul|fmaf|fdiv)_(rn|rz|ru|rd)|frsqrt_rn)\\b",
-            "name": "support.function.cuda-cpp"
-        },
-        {
-            "match": "\\b__(dsqrt|dadd|dsub|dmul|ddiv|drcp|fma)_(rn|rz|ru|rd)\\b",
-            "name": "support.function.cuda-cpp"
+            "include": "source.cpp"
         }
 	],
 	"repository": {
@@ -177,6 +113,28 @@
 				}
 			]
         },
+        "libcuda": {
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.support.function.leading.c"
+				},
+				"2": {
+					"name": "support.function.cuda-cpp"
+				}
+            },
+			"match": "(?x) (\\s*) \\b\n(cuda(?:Malloc|Free|Memcpy|Memset|MallocManaged)|atomic(?:Exch|Add|Sub|Min|Max|Inc|Dec|CAS|And|Xor|Or)|surf(?:CubemapLayeredwrite|CubemapLayeredread|1DLayeredwrite|2DLayeredwrite|1DLayeredread|2DLayeredread|Cubemapwrite|Cubemapread|1Dwrite|2Dwrite|3Dwrite|1Dread|2Dread|3Dread)|tex(?:CubemapLayered|1Dlayered|2Dlayered|2Dgather|1Dfetch|Cubemap|1D|2D|3D)|bassert|clock(64)?)\\b"
+        },
+        "libcuda__": {
+			"captures": {
+				"1": {
+					"name": "punctuation.whitespace.support.function.leading.c"
+				},
+				"2": {
+					"name": "support.function.cuda-cpp"
+				}
+            },
+			"match": "(?x) (\\s*) \\b\n(__(?:(dsqrt|dadd|dsub|dmul|ddiv|drcp|fma)_(rn|rz|ru|rd)|((fsqrt|frcp|fadd|fsub|fmul|fmaf|fdiv)_(rn|rz|ru|rd)|frsqrt_rn)|(fdividef|sincosf|log10f|exp10f|log2f|logf|expf|powf|sinf|cosf|tanf)|prof_trigger|shfl(?:|_down|_xor|_up)|(ballot|all|any)|ldg|syncthreads(?:|_count|_and|_or)|threadfence(?:|_system|_block)))\\b"
+		},
 		"access": {
 			"captures": {
 				"2": {
@@ -231,6 +189,15 @@
 				},
 				{
 					"include": "#libc"
+                },
+                {
+                    "include": "#libcuda"
+                },
+                {
+                    "include": "#libcuda__"
+                },
+                {
+					"include": "#kernel_function_call"
 				},
 				{
 					"include": "#c_function_call"
@@ -516,7 +483,13 @@
 						},
 						{
 							"include": "#libc"
-						},
+                        },
+                        {
+							"include": "#libcuda"
+                        },
+                        {
+                            "include": "#libcuda__"
+                        },
 						{
 							"include": "#c_function_call"
 						},
@@ -1608,7 +1581,13 @@
 				},
 				{
 					"include": "#libc"
-				},
+                },
+                {
+					"include": "#libcuda"
+                },
+                {
+                    "include": "#libcuda__"
+                },
 				{
 					"include": "$base"
 				}
