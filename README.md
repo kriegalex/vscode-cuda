@@ -76,7 +76,7 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-- No support for Intellisense navigation through code (right click->Go to definition,...). This will be implemented by another extension dedicated to IntelliSense and debugging.
+- No support for Intellisense navigation through code (right click->Go to definition,...). This will be implemented by [another extension](https://github.com/kriegalex/vscode-cudatools) dedicated to IntelliSense and debugging.
 
 ## Planned features
 
@@ -85,7 +85,7 @@ Below are listed the features that ideally should be available for this extensio
 - Icon for files
 - CUDA syntax colors as parameters of this extension instead of using "editor.tokenColorCustomizations" in settings.json
 
-## Feature requests
+## Feature requests & issues
 
 Requests should be made here : https://github.com/kriegalex/vscode-cuda/issues 
 
