@@ -1,6 +1,6 @@
-# CUDA for VSCode
+# CUDA for VSCode (syntax + snippets)
 
-This extension aims at providing support for CUDA (C++) in VS Code.
+This extension aims at providing syntax support and snippets for CUDA (C++) in VS Code.
 
 ## Features
 
@@ -100,7 +100,7 @@ This extension contributes the following settings:
 
 ## Planned features
 
-Below are listed the features that ideally should be available in this extension. There is no guarantees this features will be implemented, so feel free to fork this project and propose pull requests.
+Below are listed the features that ideally should be available for the CUDA language. Intellisense and debugging will probably coexist in another repository. There is no guarantees this features will be implemented.
 
 - Intellisense basic support: go to functions definition and declaration
 - CMake integration: make this extension work together with existing CMake Tools, as CMake (3.8)3.9 added official support for CUDA language
