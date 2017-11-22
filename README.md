@@ -50,7 +50,7 @@ Per textmate language grammar guidelines, "support.XYZ" scope name should be use
                 "foreground": "#56b6c2"
             }
         },
-        { // <<<,>>>
+        { // <<<  >>>
             "scope": "punctuation.section.kernel",
             "settings":{
                 "foreground": "#56b6c2"
@@ -75,9 +75,12 @@ The following snippets are available :
 - **cmalmng** : cudaMallocManaged((void**)&${1:variable}, ${2:bytes});	
 - **cmem** : cudaMemcpy(${1:dest}, ${2:src}, ${3:bytes}, cudaMemcpy${4:Host}To${5:Device});
 - **cfree** : cudaFree(${1:variable});
-- **kernel** : \_\_global\_\_ void ${1:kernel}(${2})
+- **kerneldef** : \_\_global\_\_ void ${1:kernel}(${2}) {\n}
+- **kernelcall** : ${1:kernel}<<<${2},${3}>>>(${4});
 - **thrusthv** : thrust::host_vector<${1:char}> v$0;
 - **thrustdv** : thrust::device_vector<${1:char}> v$0;
+
+![snippets](images/snippets.gif)
 
 ## Requirements
 
@@ -86,14 +89,10 @@ The following snippets are available :
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
 This extension contributes the following settings:
 
-* `myExtension.enable`: enable/disable this extension
-* `myExtension.thing`: set to `blah` to do something
+* none
+<!-- * `vscuda.enable`: enable/disable this extension -->
 
 ## Known Issues
 
@@ -110,25 +109,14 @@ Below are listed the features that ideally should be available in this extension
 
 ## Feature requests
 
+Requests should be made here : https://github.com/kriegalex/vscode-cuda/issues 
+
 ## Release Notes
+
+See also the [changelog](CHANGELOG.md)
 
 ### 0.1.0
 
 Initial release of vs-cuda extension
 
 -----------------------------------------------------------------------------------------------------------
-
-## Working with Markdown
-
-**Note:** You can author your README using Visual Studio Code.  Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
-
-### For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
