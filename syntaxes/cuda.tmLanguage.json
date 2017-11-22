@@ -4,8 +4,8 @@
 	"scopeName": "source.cuda-cpp",
 	"patterns": [
         {
-            "match": "\\b__(global|device|host|noinline|forceinline)__\\b",
-            "name": "support.keyword.function.qualifier.cuda-cpp"
+            "match": "\\b__(global|device|host|noinline|forceinline|launch_bounds)__\\b",
+            "name": "keyword.function.qualifier.cuda-cpp"
         },
         {
             "match": "\\b(dim3|char[1-4]|uchar[1-4]|short[1-4]|ushort[1-4]|int[1-4]|uint[1-4]|long[1-4]|ulong[1-4]|longlong[1-4]|ulonglong[1-4]|float[1-4]|double[1-4])\\b",
@@ -13,11 +13,7 @@
         },
         {
             "match": "\\b(gridDim|blockIdx|blockDim|threadIdx|warpSize)\\b",
-            "name": "support.variable.language.cuda-cpp"
-        },
-        {
-            "match": "\\b__launch_bounds__\\b",
-            "name": "support.function.qualifier.cuda-cpp"
+            "name": "variable.language.cuda-cpp"
         },
         {
             "include": "#block"
@@ -41,11 +37,11 @@
 			"patterns": [
                 {
 					"match": "<<<",
-					"name": "punctuation.section.operator.begin.kernel.cuda-cpp"
+					"name": "punctuation.section.kernel.begin.cuda-cpp"
 				},
                 {
 					"match": ">>>",
-					"name": "punctuation.section.operator.end.kernel.cuda-cpp"
+					"name": "punctuation.section.kernel.end.cuda-cpp"
 				},
                 {
 					"include": "#comments"
@@ -66,7 +62,7 @@
 							"name": "entity.name.function.c"
                         },
                         "2": {
-                            "name": "punctuation.section.operator.begin.kernel.cuda-cpp"
+                            "name": "punctuation.section.kernel.begin.cuda-cpp"
                         }
 					},
 					"end": "\\)",
@@ -194,7 +190,7 @@
 				},
 				{
 					"match": "\\b__(device|constant|managed|shared|restrict)__\\b",
-					"name": "support.storage.modifier.cuda-cpp"
+					"name": "storage.modifier.cuda-cpp"
 				},
                 {
 					"include": "#kernel_function_call"
