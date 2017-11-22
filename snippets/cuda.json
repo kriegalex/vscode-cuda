@@ -1,37 +1,43 @@
 {
   	"__s": {
 		"prefix": "__s",
-		"body": "\n__syncthreads();\n",
+		"body": "__syncthreads();\n",
 		"description": "",
 		"scope": "source.cuda-cpp"
  	 },
   	"cmal": {
 		"prefix": "cmal",
-		"body": "\ncudaMalloc((void**)&${1:variable}, ${2:bytes});\n",
+		"body": "cudaMalloc((void**)&${1:variable}, ${2:bytes});\n",
 		"description": "",
 		"scope": "source.cuda-cpp"
 	},
 	"cmalmng": {
 		"prefix": "cmalmng",
-		"body": "\ncudaMallocManaged((void**)&${1:variable}, ${2:bytes});\n",
+		"body": "cudaMallocManaged((void**)&${1:variable}, ${2:bytes});\n",
 		"description": "",
 		"scope": "source.cuda-cpp"
 	},	
 	"cmem": {
 		"prefix": "cmem",
-		"body": "\ncudaMemcpy(${1:dest}, ${2:src}, ${3:bytes}, cudaMemcpy${4:Host}To${5:Device});\n",
+		"body": "cudaMemcpy(${1:dest}, ${2:src}, ${3:bytes}, cudaMemcpy${4:Host}To${5:Device});\n",
 		"description": "",
 		"scope": "source.cuda-cpp"
 	},
 	"cfree": {
 		"prefix": "cfree",
-		"body": "\ncudaFree(${1:variable});\n",
+		"body": "cudaFree(${1:variable});\n",
 		"description": "",
 		"scope": "source.cuda-cpp"
 	},
-	"kernel": {
+	"kerneldef": {
 		"prefix": "kernel",
-		"body": "\n__global__ void ${1:kernel}(${2})\n",
+		"body": "\n__global__ void ${1:kernel}(${2}) {\n}\n",
+		"description": "",
+		"scope": "source.cuda-cpp"
+	},
+	"kernelcall": {
+		"prefix": "kernel",
+		"body": "${1:kernel}<<<${2},${3}>>>(${4});\n",
 		"description": "",
 		"scope": "source.cuda-cpp"
 	},
