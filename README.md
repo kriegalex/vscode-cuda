@@ -15,49 +15,19 @@ This extension supports most of the basic CUDA keywords and functions, such as b
 
 ![code-coloring](images/code-coloring.gif)
 
-Per textmate language grammar guidelines, "support.XYZ" scope name should be used for external libraries. To maximize compatibility with existing popular themes, this has not always been done. If your theme still doesn't color the CUDA code, you can set them with the template rules below (put this into your VSCode user settings in settings.json). This can also be used to override your theme colors, if you want to separate C++ and CUDA colors.
+To maximize compatibility with existing popular themes, [textmate language grammar guidelines](https://manual.macromates.com/en/language_grammars#naming_conventions) have not always been respected (external libraries like CUDA in support scope). If your theme still doesn't color the CUDA code, you can set them with the template rules below (put this into your VSCode user settings in settings.json). This can also be used to override your theme colors, if you want to separate C++ and CUDA colors.
 
-```
+```json
 "editor.tokenColorCustomizations": {
     "textMateRules": [
-        { // atomicAdd,cudaMalloc,cudaFree,...
+        {
             "scope": "support.function.cuda-cpp",
             "settings":{
                 "foreground": "#56b6c2"
             }
         },
-        { // __global__,__host__,__device__,...
+        {
             "scope": "keyword.function.qualifier.cuda-cpp",
-            "settings":{
-                "foreground": "#56b6c2"
-            }
-        },
-        { // __constant__,__device__,__shared__,...
-            "scope": "storage.modifier.cuda-cpp",
-            "settings":{
-                "foreground": "#56b6c2"
-            }
-        },
-        { // dim3,uint1,ulong1,...
-            "scope": "support.type.cuda-cpp",
-            "settings":{
-                "foreground": "#56b6c2"
-            }
-        },
-        { // gridDim,blockIdx,blockDim,threadIdx,warpSize
-            "scope": "variable.language.cuda-cpp",
-            "settings":{
-                "foreground": "#56b6c2"
-            }
-        },
-        { // <<<  >>>
-            "scope": "punctuation.section.kernel",
-            "settings":{
-                "foreground": "#56b6c2"
-            }
-        },
-        { // --> myKernelCall <-- <<<,>>>
-            "scope": "meta.kernel-call.cuda-cpp entity.name.function.c",
             "settings":{
                 "foreground": "#56b6c2"
             }
@@ -65,6 +35,16 @@ Per textmate language grammar guidelines, "support.XYZ" scope name should be use
     ]
 }
 ```
+
+#### List of scopes
+
+- **"support.function.cuda-cpp"** :             atomicAdd, cudaMalloc, cudaFree, ...
+- **"keyword.function.qualifier.cuda-cpp"** : \_\_global\_\_, \_\_host\_\_, \_\_device\_\_, ...
+- **"storage.modifier.cuda-cpp"** : \_\_constant\_\_, \_\_device\_\_, \_\_shared\_\_, ...
+- **"support.type.cuda-cpp"** : dim3, uint1, ulong1, ...
+- **"variable.language.cuda-cpp"** : gridDim, blockIdx, blockDim, threadIdx, warpSize
+- **"punctuation.section.kernel"** : the kernel brackets <<< >>>
+- **"meta.kernel-call.cuda-cpp entity.name.function.c"** : the function name before the <<< >>>
 
 ### CUDA snippets
 
@@ -96,16 +76,14 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-- No support for Intellisense navigation through code (right click->Go to definition,...). For now, you must change the file type to C++ to have it. This will be improved in next release, needs research.
+- No support for Intellisense navigation through code (right click->Go to definition,...). This will be implemented by another extension dedicated to IntelliSense and debugging.
 
 ## Planned features
 
-Below are listed the features that ideally should be available for the CUDA language. Intellisense and debugging will probably coexist in another repository. There is no guarantees this features will be implemented.
+Below are listed the features that ideally should be available for this extension. IntelliSense and debugging coexist in [another repository](https://github.com/kriegalex/vscode-cudatools). There is no guarantees this features will be implemented.
 
-- Intellisense basic support: go to functions definition and declaration
-- CMake integration: make this extension work together with existing CMake Tools, as CMake (3.8)3.9 added official support for CUDA language
-- Basic debugging: upgrade this extension to not only color code but allow for basic debugging features like breakpoints
-- Full debugging support: basically allows you to uninstall nsight and develop everything CUDA inside VSCode
+- Icon for files
+- CUDA syntax colors as parameters of this extension instead of using "editor.tokenColorCustomizations" in settings.json
 
 ## Feature requests
 
@@ -117,6 +95,6 @@ See also the [changelog](CHANGELOG.md)
 
 ### 0.1.0
 
-Initial release of vs-cuda extension
+Initial release of vscode-cuda extension
 
 -----------------------------------------------------------------------------------------------------------
