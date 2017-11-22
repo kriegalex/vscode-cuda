@@ -10,7 +10,7 @@
     "version": "0.1.0",
     "publisher": "kriegalex",
     "engines": {
-        "vscode": "^1.18.*"
+        "vscode": "^1.18.0"
     },
     "categories": [
         "Languages",
