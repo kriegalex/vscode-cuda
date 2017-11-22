@@ -15,6 +15,57 @@ This extension supports most of the basic CUDA keywords and functions, such as b
 
 ![code-coloring](images/code-coloring.gif)
 
+Per textmate language grammar guidelines, "support.XYZ" scope name should be used for external libraries. To maximize compatibility with existing popular themes, this has not always been done. If your theme still doesn't color the CUDA code, you can set them with the template rules below (put this into your VSCode user settings in settings.json). This can also be used to override your theme colors, if you want to separate C++ and CUDA colors.
+
+```
+"editor.tokenColorCustomizations": {
+    "textMateRules": [
+        { // atomicAdd,cudaMalloc,cudaFree,...
+            "scope": "support.function.cuda-cpp",
+            "settings":{
+                "foreground": "#56b6c2"
+            }
+        },
+        { // __global__,__host__,__device__,...
+            "scope": "keyword.function.qualifier.cuda-cpp",
+            "settings":{
+                "foreground": "#56b6c2"
+            }
+        },
+        { // __constant__,__device__,__shared__,...
+            "scope": "storage.modifier.cuda-cpp",
+            "settings":{
+                "foreground": "#56b6c2"
+            }
+        },
+        { // dim3,uint1,ulong1,...
+            "scope": "support.type.cuda-cpp",
+            "settings":{
+                "foreground": "#56b6c2"
+            }
+        },
+        { // gridDim,blockIdx,blockDim,threadIdx,warpSize
+            "scope": "variable.language.cuda-cpp",
+            "settings":{
+                "foreground": "#56b6c2"
+            }
+        },
+        { // <<<,>>>
+            "scope": "punctuation.section.kernel",
+            "settings":{
+                "foreground": "#56b6c2"
+            }
+        },
+        { // --> myKernelCall <-- <<<,>>>
+            "scope": "meta.kernel-call.cuda-cpp entity.name.function.c",
+            "settings":{
+                "foreground": "#56b6c2"
+            }
+        }
+    ]
+}
+```
+
 ### CUDA snippets
 
 The following snippets are available :
