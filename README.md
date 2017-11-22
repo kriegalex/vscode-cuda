@@ -97,4 +97,8 @@ See also the [changelog](CHANGELOG.md)
 
 Initial release of vscode-cuda extension
 
+### 0.1.1
+
+Better documentation
+
 -----------------------------------------------------------------------------------------------------------

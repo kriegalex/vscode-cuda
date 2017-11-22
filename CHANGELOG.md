@@ -5,3 +5,6 @@ All notable changes to the "vscode-cuda" extension will be documented in this fi
 
 ## [0.1.0]
 - Initial release of vs-cuda extension
+
+## [0.1.1]
+- Updated README to be shorter and clearer
