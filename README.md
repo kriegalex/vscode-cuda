@@ -1,4 +1,4 @@
-# CUDA for VSCode (syntax + snippets)
+# CUDA syntax & snippets (not IntelliSense)
 
 This extension aims at providing syntax support and snippets for CUDA (C++) in VS Code. 
 
