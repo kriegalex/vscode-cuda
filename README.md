@@ -1,6 +1,8 @@
 # CUDA for VSCode (syntax + snippets)
 
-This extension aims at providing syntax support and snippets for CUDA (C++) in VS Code.
+This extension aims at providing syntax support and snippets for CUDA (C++) in VS Code. 
+
+**This extension DOES NOT provide "IntelliSense like" features, as the task to implement it is really big. Use this extension when you quickly need to edit a kernel or a \_\_device__ function and want the variables and functions to be readable.**
 
 ## Features
 
@@ -76,7 +78,7 @@ This extension contributes the following settings:
 
 ## Known Issues
 
-- No support for Intellisense navigation through code (right click->Go to definition,...). This will be implemented by [another extension](https://github.com/kriegalex/vscode-cudatools) dedicated to IntelliSense and debugging.
+- No support for Intellisense navigation through code (right click->Go to definition,...). This will be implemented by [another extension](https://github.com/kriegalex/vscode-cudatools) dedicated to IntelliSense and debugging. For now, the development is on hold indefinitely. Anyone is welcome to overtake or fork it.
 
 ## Planned features
 
